@@ -22,20 +22,12 @@ def day02part01(f):
     # Sliding window of size
     matching_ids = []
     for id in id_list:
-        for window_len in range(1, len(id)):
-            if search_with_window(id, window_len):
-                matching_ids.append(id)
-                break
+        if len(id) % 2 == 1:
+            continue
+        if id[:len(id)//2] == id[len(id)//2:]:
+            matching_ids.append(id)
     
     print(matching_ids)
 
     print("==============================================")
     print(f"Solution: {sum(int(s) for s in matching_ids)}")
-
-def search_with_window(id, window_len):
-    # start at 0 and search
-    for slow in range(len(id)-window_len):
-        if slow + window_len*2 > len(id):
-            return
-        if id[slow:slow+window_len] == id[slow+window_len:slow+(window_len*2)]:
-            return True
