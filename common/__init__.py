@@ -12,3 +12,6 @@ def checkMove(x, y, xadd, yadd, lines):
         return True
     else:
         return False
+
+def convertToGrid(lines):
+    return [[x for x in y] for y in lines]

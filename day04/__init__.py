@@ -1,4 +1,5 @@
-﻿from common import *
+﻿import copy
+from common import *
 
 def day04part01(f):
     if f == "example":
@@ -33,7 +34,29 @@ def day04part02(f):
         lines = readLines("./day04/test.txt")
     else:
         lines = readLines("./day04/input.txt")
+    
+    lines = convertToGrid(lines)
 
-    result = 0
+    rollsRemoved, lines = removeAccessibleRolls(lines)
+    totalRemoved = rollsRemoved
+    while rollsRemoved > 0:
+        for line in lines:
+            print(line)
+        print("============================================")
+        rollsRemoved, lines = removeAccessibleRolls(lines)
+        print(f"Removed {rollsRemoved} rolls")
+        totalRemoved += rollsRemoved
 
-    print(f"Result: {result}")
+    print(f"Result: {totalRemoved}")
+
+def removeAccessibleRolls(lines):
+    removedRolls = 0
+    newLines = copy.deepcopy(lines)
+    for y in range(len(lines)):
+        for x in range(len(lines[y])):
+            if lines[y][x] == '@':
+                if countSurrounding(x,y,lines) <= 4:
+                    removedRolls += 1
+                    newLines[y][x] = 'x'
+    
+    return removedRolls, newLines

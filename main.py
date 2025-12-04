@@ -4,4 +4,4 @@ from day03 import *
 from day04 import *
 
 if __name__ == "__main__":
-    day04part01("prod")
+    day04part02("prod")
