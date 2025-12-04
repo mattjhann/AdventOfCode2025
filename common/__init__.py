@@ -7,3 +7,8 @@ def readLines(path):
     
     return [line.strip() for line in lines]
 
+def checkMove(x, y, xadd, yadd, lines):
+    if (x + xadd) < len(lines[y]) and (y + yadd) < len(lines) and (x + xadd) >= 0 and (y + yadd) >= 0:
+        return True
+    else:
+        return False
