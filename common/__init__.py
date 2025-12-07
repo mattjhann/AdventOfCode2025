@@ -15,3 +15,11 @@ def checkMove(x, y, xadd, yadd, lines):
 
 def convertToGrid(lines):
     return [[x for x in y] for y in lines]
+
+def replaceCharacter(original_string, index, new_char):
+    if 0 <= index < len(original_string):
+        string_list = list(original_string)
+        string_list[index] = new_char
+        return ''.join(string_list)
+    
+    return 0
