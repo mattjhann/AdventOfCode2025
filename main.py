@@ -1,4 +1,5 @@
-from day08 import *
+from day10 import *
 
 if __name__ == "__main__":
-    day08part01("example")
+    d10 = Day10()
+    d10.part02("prod")
